@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.3'
+    id 'org.springframework.boot' version '3.4.0' // updated to spring 3.4.0 to fix issues that occurred with springdoc at 3.2.3
     id 'io.spring.dependency-management' version '1.1.4'
 }
 
@@ -18,8 +18,16 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    implementation 'de.bwaldvogel:mongo-java-server:1.44.0'
+    implementation 'de.bwaldvogel:mongo-java-server:1.46.0' // bumped version to 1.46.0 to fix driver issues after moving to spring 3.4.0
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.0' // added to utilize spring swagger OpenAPI3.0 endpoint documentation and for testing endpoints easier
+
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'  // added lombok to make type creation and spring bean integration much cleaner
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.assertj:assertj-core:3.26.3' // added to make junit testing easier / more accurate
+
 }
