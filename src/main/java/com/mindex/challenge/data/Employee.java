@@ -1,5 +1,6 @@
 package com.mindex.challenge.data;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.util.List;
@@ -10,8 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Builder
+//added for quality of life as to not include null attributes in the REST endpoint's JSON response
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Employee {
     private String employeeId;
     private String firstName;
