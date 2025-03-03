@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/reporting-structure")
-@Slf4j // adds logger instead of doing static boilerplate logger code
 
 /**
  * Additional thoughts:
  *
- *  Because spring allows for constructor injection, I decided to utilize the annotation below
- *     which takes any final attribute and autowires it as a parameter into this classes constructor.
+ *  Because spring allows for constructor injection, I decided to utilize the annotation @{@link RequiredArgsConstructor}
+ *     which takes any final attribute and autowires it as a parameter into this class' constructor.
  *     Doing this allows for easier manual mock injection during junit testing if desirable and is the
  *     preferred way spring wishes to inject beans.
  */
 
+
+@RestController
+@RequestMapping("/reporting-structure")
+@Slf4j // adds logger instead of doing static boilerplate logger code
 @RequiredArgsConstructor
 @Tag(name = "Employee Reporting Structure Controller", description = "returns information pertaining to employee reporting.")
 public class ReportingStructureController {

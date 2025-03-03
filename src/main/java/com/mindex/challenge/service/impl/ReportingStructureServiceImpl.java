@@ -12,16 +12,13 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-@Service
-@Slf4j
-@RequiredArgsConstructor
-
 /**
  * Thoughts while working:
  *
  * During my initial attempt at this before re-reading the prompt to ensure requirements were met in the first task. I noticed
  * the requirement was to "fully" fill out the reporting structure object. Now my first thought was to just ensure
- * all attributes of the object were filled out, that being both the employee attribute and the numberOfReports attribute.
+ * all attributes of the object were filled out, that being both the {@link ReportingStructure#employee} attribute and the
+ * {@link ReportingStructure#numberOfReports} attribute.
  * However, upon testing it was noticed that the employee object would return with partially filled out information in the direct reports array;
  * that being, just the employee id's and nothing else. I felt this didn't make sense from a data perspective to return the total number
  * of reports as being 4 but only show 2 employee ids that are linked. That said, I went back and redesigned my original queue approach
@@ -29,6 +26,10 @@ import java.util.stream.Collectors;
  * and updates all employee information to provide a fully filled out reporting structure as you would expect to see in a large
  * organization website.
  */
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
 public class ReportingStructureServiceImpl implements ReportingStructureService {
 
     final EmployeeService employeeService;
